@@ -10,5 +10,8 @@ RUN git clone git://github.com/Netflix/SimianArmy.git /src \
     && ./gradlew build
 
 WORKDIR /src
+
+COPY config/*.properties src/main/resources/
+
 ENTRYPOINT ["./gradlew"]
 CMD ["jettyRun"]
