@@ -8,3 +8,6 @@ rebuild:
 
 run: build
 	docker run -t --rm $(IMAGE)
+
+shell: build
+	docker run -it --rm --entrypoint /bin/bash $(IMAGE)
