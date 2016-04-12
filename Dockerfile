@@ -13,5 +13,5 @@ WORKDIR /src
 
 COPY config/*.properties src/main/resources/
 
-ENTRYPOINT ["./gradlew"]
-CMD ["jettyRun"]
+COPY entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
