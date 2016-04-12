@@ -4,12 +4,11 @@ MAINTAINER Mathias Lafeldt <mathias.lafeldt@gmail.com>
 
 ENV SIMIANARMY_VERSION 79f5263
 
-RUN git clone git://github.com/Netflix/SimianArmy.git /src \
-    && cd /src \
+WORKDIR /simianarmy
+
+RUN git clone git://github.com/Netflix/SimianArmy.git . \
     && git checkout -qf $SIMIANARMY_VERSION \
     && ./gradlew build
-
-WORKDIR /src
 
 COPY config/*.properties src/main/resources/
 
