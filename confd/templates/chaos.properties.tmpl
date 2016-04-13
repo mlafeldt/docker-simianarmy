@@ -3,50 +3,52 @@
 # https://github.com/Netflix/SimianArmy/wiki/Configuration
 
 # let chaos run
-simianarmy.chaos.enabled = true
+simianarmy.chaos.enabled = {{getv "/simianarmy/chaos/enabled" "true"}}
 
 # don't allow chaos to kill (ie dryrun mode)
-simianarmy.chaos.leashed = true
+simianarmy.chaos.leashed = {{getv "/simianarmy/chaos/leashed" "true"}}
 
 # set to "false" for Opt-In behavior, "true" for Opt-Out behavior
-simianarmy.chaos.ASG.enabled = false
+simianarmy.chaos.ASG.enabled = {{getv "/simianarmy/chaos/asg/enabled" "false"}}
 
 # uncomment this line to use tunable aggression
 #simianarmy.client.chaos.class = com.netflix.simianarmy.tunable.TunablyAggressiveChaosMonkey
 
 # default probability for all ASGs
-simianarmy.chaos.ASG.probability = 1.0
+simianarmy.chaos.ASG.probability = {{getv "/simianarmy/chaos/asg/probability" "1.0"}}
 
 # increase or decrease the termination limit
-simianarmy.chaos.ASG.maxTerminationsPerDay = 1.0
+simianarmy.chaos.ASG.maxTerminationsPerDay = {{getv "/simianarmy/chaos/asg/maxterminationsperday" "1.0"}}
 
 # Strategies
-simianarmy.chaos.shutdowninstance.enabled = true
-simianarmy.chaos.blockallnetworktraffic.enabled = false
-simianarmy.chaos.burncpu.enabled = false
-simianarmy.chaos.killprocesses.enabled = false
-simianarmy.chaos.nullroute.enabled = false
-simianarmy.chaos.failapi.enabled = false
-simianarmy.chaos.faildns.enabled = false
-simianarmy.chaos.faildynamodb.enabled = false
-simianarmy.chaos.fails3.enabled = false
-simianarmy.chaos.networkcorruption.enabled = false
-simianarmy.chaos.networklatency.enabled = false
-simianarmy.chaos.networkloss.enabled = false
+simianarmy.chaos.shutdowninstance.enabled = {{getv "/simianarmy/chaos/shutdowninstance/enabled" "true"}}
+simianarmy.chaos.blockallnetworktraffic.enabled = {{getv "/simianarmy/chaos/blockallnetworktraffic/enabled" "false"}}
+simianarmy.chaos.burncpu.enabled = {{getv "/simianarmy/chaos/burncpu/enabled" "false"}}
+simianarmy.chaos.killprocesses.enabled = {{getv "/simianarmy/chaos/killprocesses/enabled" "false"}}
+simianarmy.chaos.nullroute.enabled = {{getv "/simianarmy/chaos/nullroute/enabled" "false"}}
+simianarmy.chaos.failapi.enabled = {{getv "/simianarmy/chaos/failapi/enabled" "false"}}
+simianarmy.chaos.faildns.enabled = {{getv "/simianarmy/chaos/faildns/enabled" "false"}}
+simianarmy.chaos.faildynamodb.enabled = {{getv "/simianarmy/chaos/faildynamodb/enabled" "false"}}
+simianarmy.chaos.fails3.enabled = {{getv "/simianarmy/chaos/fails3/enabled" "false"}}
+simianarmy.chaos.networkcorruption.enabled = {{getv "/simianarmy/chaos/networkcorruption/enabled" "false"}}
+simianarmy.chaos.networklatency.enabled = {{getv "/simianarmy/chaos/networklatency/enabled" "false"}}
+simianarmy.chaos.networkloss.enabled = {{getv "/simianarmy/chaos/networkloss/enabled" "false"}}
 
 # Force-detaching EBS volumes may cause data loss
-simianarmy.chaos.detachvolumes.enabled = false
+simianarmy.chaos.detachvolumes.enabled = {{getv "/simianarmy/chaos/detachvolumes/enabled" "false"}}
 
 # FillDisk fills the root disk.
 # NOTE: This may incur charges for an EBS root volume.  See burnmoney option.
-simianarmy.chaos.burnio.enabled = false
+simianarmy.chaos.burnio.enabled = {{getv "/simianarmy/chaos/burnio/enabled" "false"}}
 # BurnIO causes disk activity on the root disk.
 # NOTE: This may incur charges for an EBS root volume. See burnmoney option.
-simianarmy.chaos.filldisk.enabled = false
+simianarmy.chaos.filldisk.enabled = {{getv "/simianarmy/chaos/filldisk/enabled" "false"}}
 
 # Where we know the chaos strategy will incur charges, we won't run it unless burnmoney is true.
-simianarmy.chaos.burnmoney = false
+simianarmy.chaos.burnmoney = {{getv "/simianarmy/chaos/burnmoney" "false"}}
 
+# Enable on-demand termination via API
+simianarmy.chaos.terminateOndemand.enabled = {{getv "/simianarmy/chaos/terminateondemand/enabled" "false"}}
 
 # enable a specific ASG
 # simianarmy.chaos.ASG.<asgName>.enabled = true
@@ -61,9 +63,9 @@ simianarmy.chaos.burnmoney = false
 # the next 2 days an instance should be terminated), then
 # do nothing again for windowInDays.  This forces "enabled" groups
 # that have a probability of 0.0 to have terminations periodically.
-simianarmy.chaos.mandatoryTermination.enabled = false
-simianarmy.chaos.mandatoryTermination.windowInDays = 32
-simianarmy.chaos.mandatoryTermination.defaultProbability = 0.5
+simianarmy.chaos.mandatoryTermination.enabled = {{getv "/simianarmy/chaos/mandatorytermination/enabled" "false"}}
+simianarmy.chaos.mandatoryTermination.windowInDays = {{getv "/simianarmy/chaos/mandatorytermination/windowindays" "32"}}
+simianarmy.chaos.mandatoryTermination.defaultProbability = {{getv "/simianarmy/chaos/mandatorytermination/defaultprobability" "0.5"}}
 
 # Enable notification for Chaos termination for a specific instance group
 # simianarmy.chaos.<groupType>.<groupName>.notification.enabled = true
@@ -72,13 +74,17 @@ simianarmy.chaos.mandatoryTermination.defaultProbability = 0.5
 # simianarmy.chaos.<groupType>.<groupName>.ownerEmail = foo@bar.com
 
 # Set the source email that sends the termination notification
-# simianarmy.chaos.notification.sourceEmail = foo@bar.com
+{{if exists "/simianarmy/chaos/notification/sourceemail" -}}
+simianarmy.chaos.notification.sourceEmail = {{getv "/simianarmy/chaos/notification/sourceemail"}}
+{{end -}}
 
 # Enable notification for Chaos termination for all instance groups
-#simianarmy.chaos.notification.global.enabled = true
+simianarmy.chaos.notification.global.enabled = {{getv "/simianarmy/chaos/notification/global/enabled" "false"}}
 
 # Set the destination email the termination notification is sent to for all instance groups
-#simianarmy.chaos.notification.global.receiverEmail = foo@bar.com
+{{if exists "/simianarmy/chaos/notification/receiveremail" -}}
+simianarmy.chaos.notification.global.receiverEmail = {{getv "/simianarmy/chaos/notification/receiveremail"}}
+{{end -}}
 
 # Set a prefix applied to the subject of all termination notifications
 # Probably want to include a trailing space to separate from start of default text
@@ -99,5 +105,9 @@ simianarmy.chaos.mandatoryTermination.defaultProbability = 0.5
 # Enable the email subject to be the same as the body, to include terminated instance and group information
 #simianarmy.chaos.notification.subject.isBody = true
 #set the tag filter on the ASGs to terminate only instances from the ASG with the this tag key and value
-#simianarmy.chaos.ASGtag.key = chaos_monkey
-#simianarmy.chaos.ASGtag.value = true
+{{if exists "/simianarmy/chaos/asgtag/key" -}}
+simianarmy.chaos.ASGtag.key = {{getv "/simianarmy/chaos/asgtag/key"}}
+{{end -}}
+{{if exists "/simianarmy/chaos/asgtag/value" -}}
+simianarmy.chaos.ASGtag.value = {{getv "/simianarmy/chaos/asgtag/value"}}
+{{end -}}

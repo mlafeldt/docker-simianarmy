@@ -2,5 +2,5 @@
 src = "client.properties.tmpl"
 dest = "/simianarmy/src/main/resources/client.properties"
 keys = [
-  "/simianarmy/client/aws",
+  "/simianarmy/client",
 ]
