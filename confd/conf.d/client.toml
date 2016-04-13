@@ -2,10 +2,5 @@
 src = "client.properties.tmpl"
 dest = "/simianarmy/src/main/resources/client.properties"
 keys = [
-  "/simianarmy/client/aws/accountkey",
-  "/simianarmy/client/aws/secretkey",
-  "/simianarmy/client/aws/region",
-  "/simianarmy/client/aws/accountname",
-  "/simianarmy/client/aws/assumerolearn",
-  "/simianarmy/client/aws/cloudformationmode",
+  "/simianarmy/client/aws",
 ]
