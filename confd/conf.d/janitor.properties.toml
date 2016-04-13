@@ -1,0 +1,3 @@
+[template]
+src = "janitor.properties.tmpl"
+dest = "/simianarmy/src/main/resources/janitor.properties"
