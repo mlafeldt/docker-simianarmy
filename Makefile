@@ -15,3 +15,9 @@ run: build
 
 shell: build
 	docker run -it --rm $(ENV) $(IMAGE) /bin/bash
+
+dump-sdb:
+	aws sdb select --select-expression "select * from SIMIAN_ARMY"
+
+wipe-sdb:
+	aws sdb delete-domain --domain-name SIMIAN_ARMY
