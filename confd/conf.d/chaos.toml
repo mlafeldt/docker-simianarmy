@@ -2,5 +2,5 @@
 src = "chaos.properties.tmpl"
 dest = "/simianarmy/src/main/resources/chaos.properties"
 keys = [
-  "/simianarmy/chaos",
+  "/simianarmy",
 ]
