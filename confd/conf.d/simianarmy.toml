@@ -1,3 +1,6 @@
 [template]
 src = "simianarmy.properties.tmpl"
 dest = "/simianarmy/src/main/resources/simianarmy.properties"
+keys = [
+  "/simianarmy",
+]

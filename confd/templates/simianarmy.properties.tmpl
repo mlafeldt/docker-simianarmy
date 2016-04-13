@@ -1,7 +1,7 @@
 # see documentation at:
 # https://github.com/Netflix/SimianArmy/wiki/Configuration
 
-simianarmy.recorder.sdb.domain = SIMIAN_ARMY
+simianarmy.recorder.sdb.domain = {{getv "/simianarmy/recorder/sdb/domain" "SIMIAN_ARMY"}}
 
 # If using a non-SimbleDB recorder (LocalDB), these settings tweak defaults.
 # Following should be a writeable location, for monkey events when SimpleDB is not used
@@ -12,18 +12,18 @@ simianarmy.recorder.sdb.domain = SIMIAN_ARMY
 # Optional password to encrypt event storage.
 #simianarmy.recorder.localdb.password=some_secret
 
-simianarmy.scheduler.frequency = 1
-simianarmy.scheduler.frequencyUnit = HOURS
-simianarmy.scheduler.threads = 1
-simianarmy.calendar.openHour = 9
-simianarmy.calendar.closeHour = 15
-simianarmy.calendar.timezone = America/Los_Angeles
+simianarmy.scheduler.frequency = {{getv "/simianarmy/scheduler/frequency" "1"}}
+simianarmy.scheduler.frequencyUnit = {{getv "/simianarmy/scheduler/frequencyunit" "HOURS"}}
+simianarmy.scheduler.threads = {{getv "/simianarmy/scheduler/threads" "1"}}
+simianarmy.calendar.openHour = {{getv "/simianarmy/calendar/openhour" "9"}}
+simianarmy.calendar.closeHour = {{getv "/simianarmy/calendar/closehour" "15"}}
+simianarmy.calendar.timezone = {{getv "/simianarmy/calendar/timezone" "America/Los_Angeles"}}
 # override to force monkey time, useful for debugging off hours
-#simianarmy.calendar.isMonkeyTime = true
+simianarmy.calendar.isMonkeyTime = {{getv "/simianarmy/calendar/ismonkeytime" "false"}}
 
 # Allows you to Set the (case sensitive) AWS Tag Key to use for owner tags; e.g. Owner or owner
 # Will be Monkey Wide - used by all Monkeys. If not set defaults to "owner"
-# simianarmy.tags.owner = Owner
+simianarmy.tags.owner = {{getv "/simianarmy/tags/owner" "owner"}}
 
 # Region override for Amazon Simple Email Service Client
-#simianarmy.aws.email.region=us-west-1
+simianarmy.aws.email.region = {{getv "/simianarmy/aws/email/region" "us-west-1"}}
