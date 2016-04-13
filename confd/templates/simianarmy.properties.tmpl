@@ -26,4 +26,6 @@ simianarmy.calendar.isMonkeyTime = {{getv "/simianarmy/calendar/ismonkeytime" "f
 simianarmy.tags.owner = {{getv "/simianarmy/tags/owner" "owner"}}
 
 # Region override for Amazon Simple Email Service Client
-simianarmy.aws.email.region = {{getv "/simianarmy/aws/email/region" "us-west-1"}}
+{{if exists "/simianarmy/aws/email/region" -}}
+simianarmy.aws.email.region = {{getv "/simianarmy/aws/email/region"}}
+{{end -}}
