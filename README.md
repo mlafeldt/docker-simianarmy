@@ -1,42 +1,31 @@
 # The Simian Army, Docker Edition
 
-[![Docker Repository on Quay](https://quay.io/repository/mlafeldt/simianarmy/status "Docker Repository on Quay")](https://quay.io/repository/mlafeldt/simianarmy)
+The goal of this project is to provide a highly configurable Docker image of Netflix's [Simian Army](https://github.com/Netflix/SimianArmy) as a sound basis for running automated chaos experiments.
 
-The goal of this project is to provide a highly configurable Docker image of
-Netflix's [Simian Army](https://github.com/Netflix/SimianArmy) as a sound basis
-for running automated chaos experiments.
-
-> The Simian Army is a suite of tools for keeping your cloud operating in top
-> form. Chaos Monkey, the first member, is a resiliency tool that helps ensure
-> that your applications can tolerate random instance failures
+> The Simian Army is a suite of tools for keeping your cloud operating in top form. Chaos Monkey, the first member, is a resiliency tool that helps ensure that your applications can tolerate random instance failures
 
 ## Usage
 
 This will start a Docker container running the Simian Army:
 
 ```bash
-docker pull quay.io/mlafeldt/simianarmy
-docker run -it --rm [-e CONFD_OPTS="..."] quay.io/mlafeldt/simianarmy
+docker pull mlafeldt/simianarmy
+docker run -it --rm [-e CONFD_OPTS="..."] mlafeldt/simianarmy
 ```
 
 See next section on how to configure the Simian Army.
 
 ## Configuration
 
-The Simian Army is a Java application that reads [its configuration](https://github.com/Netflix/SimianArmy/wiki/Configuration)
-from `*.properties` files. The Docker container will update those configuration
-files dynamically at startup via [confd](https://github.com/kelseyhightower/confd).
+The Simian Army is a Java application that reads [its configuration](https://github.com/Netflix/SimianArmy/wiki/Configuration) from `*.properties` files. The Docker container will update those configuration files dynamically at startup via [confd](https://github.com/kelseyhightower/confd).
 
-confd can fetch configuration data from different key-value stores such as etcd
-or Vault, or environment variables passed to the container via `-e` (the default
-behavior). For this abstraction to work, the following mapping is used:
+confd can fetch configuration data from different key-value stores such as etcd or Vault, or environment variables passed to the container via `-e` (the default behavior). For this abstraction to work, the following mapping is used:
 
 | Example property         | Key (etcd, Vault)         | Environment variable     |
 | ------------------------ | ------------------------- | ------------------------ |
 | simianarmy.chaos.leashed | /simianarmy/chaos/leashed | SIMIANARMY_CHAOS_LEASHED |
 
-That being said, here is how to configure the Simian Army via environment
-variables:
+That being said, here is how to configure the Simian Army via environment variables:
 
 ```bash
 docker run -it --rm \
@@ -44,7 +33,7 @@ docker run -it --rm \
     -e SIMIANARMY_CLIENT_AWS_SECRETKEY=$AWS_SECRET_ACCESS_KEY \
     -e SIMIANARMY_CLIENT_AWS_REGION=$AWS_REGION \
     -e SIMIANARMY_CALENDAR_ISMONKEYTIME=true \
-    quay.io/mlafeldt/simianarmy
+    mlafeldt/simianarmy
 ```
 
 The same example using etcd:
@@ -56,12 +45,10 @@ etcdctl set /simianarmy/client/aws/region $AWS_REGION
 etcdctl set /simianarmy/calendar/ismonkeytime true
 docker run -it --rm \
     -e CONFD_OPTS="-backend=etcd -node=http://$ETCD_ENDPOINT" \
-    quay.io/mlafeldt/simianarmy
+    mlafeldt/simianarmy
 ```
 
-As the last example shows, you can set `CONFD_OPTS` to pass
-[any available option](https://github.com/kelseyhightower/confd/blob/master/docs/command-line-flags.md)
-to confd to switch backends, etc.
+As the last example shows, you can set `CONFD_OPTS` to pass [any available option](https://github.com/kelseyhightower/confd/blob/master/docs/command-line-flags.md) to confd to switch backends, etc.
 
 ## Supported Properties
 
@@ -77,8 +64,7 @@ What follows is an overview of all configuration properties you may set.
 | /simianarmy/client/aws/accountname | default |
 | /simianarmy/client/aws/assumerolearn | |
 
-See https://github.com/Netflix/SimianArmy/wiki/Client-Settings for a detailed
-description of the properties.
+See https://github.com/Netflix/SimianArmy/wiki/Client-Settings for a detailed description of the properties.
 
 ### Global Properties
 
@@ -95,8 +81,7 @@ description of the properties.
 | /simianarmy/tags/owner | owner |
 | /simianarmy/aws/email/region | |
 
-See https://github.com/Netflix/SimianArmy/wiki/Global-Settings for a detailed
-description of the properties.
+See https://github.com/Netflix/SimianArmy/wiki/Global-Settings for a detailed description of the properties.
 
 ### Chaos Monkey Properties
 
@@ -133,8 +118,7 @@ description of the properties.
 | /simianarmy/chaos/asgtag/key | |
 | /simianarmy/chaos/asgtag/value | |
 
-See https://github.com/Netflix/SimianArmy/wiki/Chaos-Settings for a detailed
-description of the properties.
+See https://github.com/Netflix/SimianArmy/wiki/Chaos-Settings for a detailed description of the properties.
 
 ### Janitor Monkey Properties
 
