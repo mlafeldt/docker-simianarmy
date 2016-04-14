@@ -76,7 +76,6 @@ What follows is an overview of all configuration properties you may set.
 | /simianarmy/client/aws/region | us-west-1 |
 | /simianarmy/client/aws/accountname | default |
 | /simianarmy/client/aws/assumerolearn | |
-| /simianarmy/client/aws/cloudformationmode | |
 
 See https://github.com/Netflix/SimianArmy/wiki/Client-Settings for a detailed
 description of the properties.

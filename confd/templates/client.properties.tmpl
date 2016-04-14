@@ -54,9 +54,7 @@ simianarmy.client.aws.assumeRoleArn = {{getv "/simianarmy/client/aws/assumerolea
 ### Operate in Cloud Formation mode - the random suffix appended to Auto Scaling Group names is ignored
 ### (specify ASG names as usual with no suffix in chaos.properties)
 #
-{{if exists "/simianarmy/client/aws/cloudformationmode" -}}
-simianarmy.client.chaos.class=com.netflix.simianarmy.basic.chaos.CloudFormationChaosMonkey
-{{end -}}
+#simianarmy.client.chaos.class=com.netflix.simianarmy.basic.chaos.CloudFormationChaosMonkey
 
 # Use the following if a proxy is needed to connect to AWS APIs
 # proxyHost and proxyPort are required to connect through a proxy, proxyUser and proxyPassword are optional
