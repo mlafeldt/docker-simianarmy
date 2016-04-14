@@ -122,7 +122,7 @@ See https://github.com/Netflix/SimianArmy/wiki/Global-Settings for a detailed de
 | /simianarmy/chaos/asgtag/key | |
 | /simianarmy/chaos/asgtag/value | |
 
-See https://github.com/Netflix/SimianArmy/wiki/Chaos-Settings for a detailed description of the properties.
+See https://github.com/Netflix/SimianArmy/wiki/Chaos-Settings for a detailed description of the properties. Also, consult https://github.com/Netflix/SimianArmy/wiki/The-Chaos-Monkey-Army to learn more about the different Chaos Monkey strategies.
 
 ### Janitor Monkey Properties
 
