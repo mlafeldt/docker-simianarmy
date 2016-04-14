@@ -39,12 +39,16 @@ docker run -it --rm \
 The same example using etcd:
 
 ```bash
+# Write configuration data to etcd
+export ETCDCTL_ENDPOINT=http://$YOUR_ETCD_IP:2379
 etcdctl set /simianarmy/client/aws/accountkey $AWS_ACCESS_KEY_ID
 etcdctl set /simianarmy/client/aws/secretkey $AWS_SECRET_KEY
 etcdctl set /simianarmy/client/aws/region $AWS_REGION
 etcdctl set /simianarmy/calendar/ismonkeytime true
+
+# Start container using data in etcd
 docker run -it --rm \
-    -e CONFD_OPTS="-backend=etcd -node=http://$ETCD_ENDPOINT" \
+    -e CONFD_OPTS="-backend=etcd -node=$ETCDCTL_ENDPOINT" \
     mlafeldt/simianarmy
 ```
 
