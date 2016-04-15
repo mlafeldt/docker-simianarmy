@@ -19,6 +19,11 @@ run: build
 shell: build
 	docker run -it --rm $(ENV) $(IMAGE) /bin/bash
 
+# Mount checkout of Simple Army for local development. Set SIMIANARMY_CHECKOUT
+# to the directory where the Git repo is checked out.
+dev: build
+	docker run -it --rm -v "$(SIMIANARMY_CHECKOUT)/src:/simianarmy/src" $(ENV) $(IMAGE)
+
 # The Simian Army persists state in SimpleDB.
 dump-sdb:
 	aws sdb select --select-expression "select * from SIMIAN_ARMY" | jq
