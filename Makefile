@@ -1,9 +1,13 @@
 IMAGE := mlafeldt/simianarmy
 
+# Use custom SimpleDB domain for testing.
+SDB_DOMAIN := DOCKER_SIMIAN_ARMY
+
 ENV := -e CONFD_OPTS="$(CONFD_OPTS)" \
 	-e SIMIANARMY_CLIENT_AWS_ACCOUNTKEY=$(AWS_ACCESS_KEY_ID) \
 	-e SIMIANARMY_CLIENT_AWS_SECRETKEY=$(AWS_SECRET_ACCESS_KEY) \
 	-e SIMIANARMY_CLIENT_AWS_REGION=$(AWS_REGION) \
+	-e SIMIANARMY_RECORDER_SDB_DOMAIN=$(SDB_DOMAIN) \
 	-e SIMIANARMY_CALENDAR_ISMONKEYTIME=true
 
 build:
@@ -29,7 +33,7 @@ dev: build
 
 # The Simian Army persists state in SimpleDB.
 dump-sdb:
-	aws sdb select --select-expression "select * from SIMIAN_ARMY" | jq
+	aws sdb select --select-expression "select * from $(SDB_DOMAIN)" | jq
 
 wipe-sdb:
-	aws sdb delete-domain --domain-name SIMIAN_ARMY
+	aws sdb delete-domain --domain-name $(SDB_DOMAIN)
