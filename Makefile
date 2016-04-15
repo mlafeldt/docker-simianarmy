@@ -15,9 +15,11 @@ rebuild:
 run: build
 	docker run -it --rm $(ENV) $(IMAGE)
 
+# For debugging.
 shell: build
 	docker run -it --rm $(ENV) $(IMAGE) /bin/bash
 
+# The Simian Army persists state in SimpleDB.
 dump-sdb:
 	aws sdb select --select-expression "select * from SIMIAN_ARMY"
 
