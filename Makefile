@@ -19,10 +19,13 @@ run: build
 shell: build
 	docker run -it --rm $(ENV) $(IMAGE) /bin/bash
 
-# Mount checkout of Simple Army for local development. Set SIMIANARMY_CHECKOUT
-# to the directory where the Git repo is checked out.
+# Mount checkout of Simian Army for local development. Set SIMIANARMY_CHECKOUT
+# to the directory where the Git repo is checked out. Inside the container, run
+# /entrypoint.sh to start the server.
 dev: build
-	docker run -it --rm -v "$(SIMIANARMY_CHECKOUT)/src:/simianarmy/src" $(ENV) $(IMAGE)
+	docker run -it --rm \
+		-v "$(SIMIANARMY_CHECKOUT)/src:/simianarmy/src" \
+		$(ENV) $(IMAGE) /bin/bash
 
 # The Simian Army persists state in SimpleDB.
 dump-sdb:
