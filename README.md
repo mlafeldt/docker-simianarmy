@@ -21,9 +21,13 @@ The Simian Army is a Java application that reads [its configuration](https://git
 
 confd can fetch configuration data from different key-value stores such as etcd or Vault, or environment variables passed to the container via `-e` (the default behavior). For this abstraction to work, the following mapping is used:
 
-| Example property         | Key (etcd, Vault)         | Environment variable     |
-| ------------------------ | ------------------------- | ------------------------ |
+| Example property | Key (etcd, Vault) | Environment variable |
+| ---------------- | ----------------- | -------------------- |
 | simianarmy.chaos.leashed | /simianarmy/chaos/leashed | SIMIANARMY_CHAOS_LEASHED |
+| simianarmy.calendar.isMonkeyTime | /simianarmy/calendar/ismonkeytime | SIMIANARMY_CALENDAR_ISMONKEYTIME |
+| ... | ... | ... |
+
+### Via Environment Variables
 
 That being said, here is how to configure the Simian Army via environment variables:
 
@@ -35,6 +39,8 @@ docker run -it --rm \
     -e SIMIANARMY_CALENDAR_ISMONKEYTIME=true \
     mlafeldt/simianarmy
 ```
+
+### Via etcd
 
 The same example using etcd:
 
@@ -52,7 +58,7 @@ docker run -it --rm \
     mlafeldt/simianarmy
 ```
 
-As the last example shows, you can set `CONFD_OPTS` to pass [any available option](https://github.com/kelseyhightower/confd/blob/master/docs/command-line-flags.md) to confd to switch backends, etc.
+As this example shows, you can set `CONFD_OPTS` to pass [any available option](https://github.com/kelseyhightower/confd/blob/master/docs/command-line-flags.md) to confd to switch backends, change the log level, etc.
 
 ## Supported Properties
 
