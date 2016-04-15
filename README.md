@@ -40,6 +40,9 @@ docker run -it --rm \
     mlafeldt/simianarmy
 ```
 
+Note: This example is safe to run as Chaos Monkey will operate in dry-run mode
+(`SIMIANARMY_CHAOS_LEASHED` is `true` by default).
+
 ### Via etcd
 
 The same example using etcd:
