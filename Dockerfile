@@ -15,3 +15,4 @@ COPY confd/ /etc/confd
 
 COPY entrypoint.sh /
 ENTRYPOINT ["/entrypoint.sh"]
+EXPOSE 8080

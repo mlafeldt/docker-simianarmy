@@ -18,17 +18,17 @@ rebuild:
 	docker build --pull --no-cache --force-rm -t $(IMAGE) .
 
 run: build
-	docker run -it --rm $(ENV) $(IMAGE)
+	docker run -it --rm -p 8080:8080 $(ENV) $(IMAGE)
 
 # For debugging.
 shell: build
-	docker run -it --rm $(ENV) $(IMAGE) /bin/bash
+	docker run -it --rm -p 8080:8080 $(ENV) $(IMAGE) /bin/bash
 
 # Mount checkout of Simian Army for local development. Set SIMIANARMY_CHECKOUT
 # to the directory where the Git repo is checked out. Inside the container, run
 # /entrypoint.sh to start the server.
 dev: build
-	docker run -it --rm \
+	docker run -it --rm -p 8080:8080 \
 		-v "$(SIMIANARMY_CHECKOUT)/src:/simianarmy/src" \
 		$(ENV) $(IMAGE) /bin/bash
 
