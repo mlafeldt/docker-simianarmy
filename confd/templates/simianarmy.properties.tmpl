@@ -5,12 +5,18 @@ simianarmy.recorder.sdb.domain = {{getv "/simianarmy/recorder/sdb/domain" "SIMIA
 
 # If using a non-SimbleDB recorder (LocalDB), these settings tweak defaults.
 # Following should be a writeable location, for monkey events when SimpleDB is not used
-#simianarmy.recorder.localdb.file=/tmp/simianarmy_events
+{{if exists "/simianarmy/recorder/localdb/file" -}}
+simianarmy.recorder.localdb.file = {{getv "/simianarmy/recorder/localdb/file"}}
+{{end -}}
 # Max number of events to record; old events will be expired after this limit is
 # reached.  Use this to avoid filling disk with events (or attach a big volume!)
-#simianarmy.recorder.localdb.max_events=1000000
+{{if exists "/simianarmy/recorder/localdb/maxevents" -}}
+simianarmy.recorder.localdb.max_events = {{getv "/simianarmy/recorder/localdb/maxevents"}}
+{{end -}}
 # Optional password to encrypt event storage.
-#simianarmy.recorder.localdb.password=some_secret
+{{if exists "/simianarmy/recorder/localdb/password" -}}
+simianarmy.recorder.localdb.password = {{getv "/simianarmy/recorder/localdb/password"}}
+{{end -}}
 
 simianarmy.scheduler.frequency = {{getv "/simianarmy/scheduler/frequency" "1"}}
 simianarmy.scheduler.frequencyUnit = {{getv "/simianarmy/scheduler/frequencyunit" "HOURS"}}
