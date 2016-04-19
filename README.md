@@ -77,6 +77,7 @@ What follows is an overview of all configuration properties you may set.
 | /simianarmy/client/aws/accountname | default |
 | /simianarmy/client/aws/assumerolearn | |
 | /simianarmy/client/recorder/class | |
+| /simianarmy/client/cloudformationmode/enabled | false |
 
 See https://github.com/Netflix/SimianArmy/wiki/Client-Settings for a detailed description of the properties.
 

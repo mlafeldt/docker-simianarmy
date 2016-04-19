@@ -55,8 +55,9 @@ simianarmy.client.recorder.class = {{getv "/simianarmy/client/recorder/class"}}
 
 ### Operate in Cloud Formation mode - the random suffix appended to Auto Scaling Group names is ignored
 ### (specify ASG names as usual with no suffix in chaos.properties)
-#
-#simianarmy.client.chaos.class=com.netflix.simianarmy.basic.chaos.CloudFormationChaosMonkey
+{{if eq (getv "/simianarmy/client/cloudformationmode/enabled" "false") "true" -}}
+simianarmy.client.chaos.class = com.netflix.simianarmy.basic.chaos.CloudFormationChaosMonkey
+{{end -}}
 
 # Use the following if a proxy is needed to connect to AWS APIs
 # proxyHost and proxyPort are required to connect through a proxy, proxyUser and proxyPassword are optional
