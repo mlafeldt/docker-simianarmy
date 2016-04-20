@@ -78,6 +78,10 @@ Properties marked with an asterisk (\*) are custom properties added by this Dock
 | /simianarmy/client/aws/region | |
 | /simianarmy/client/aws/assumerolearn | |
 | /simianarmy/client/aws/accountname | |
+| /simianarmy/client/aws/proxyhost | |
+| /simianarmy/client/aws/proxyport | |
+| /simianarmy/client/aws/proxyuser | |
+| /simianarmy/client/aws/proxypassword | |
 | /simianarmy/client/localdb/enabled\* | false |
 | /simianarmy/client/cloudformationmode/enabled\* | false |
 

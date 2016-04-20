@@ -19,6 +19,18 @@ simianarmy.client.aws.assumeRoleArn = {{getv "/simianarmy/client/aws/assumerolea
 {{if exists "/simianarmy/client/aws/accountname" -}}
 simianarmy.client.aws.accountName = {{getv "/simianarmy/client/aws/accountname"}}
 {{end -}}
+{{if exists "/simianarmy/client/aws/proxyhost" -}}
+simianarmy.client.aws.proxyHost = {{getv "/simianarmy/client/aws/proxyhost"}}
+{{end -}}
+{{if exists "/simianarmy/client/aws/proxyport" -}}
+simianarmy.client.aws.proxyPort = {{getv "/simianarmy/client/aws/proxyport"}}
+{{end -}}
+{{if exists "/simianarmy/client/aws/proxyuser" -}}
+simianarmy.client.aws.proxyUser = {{getv "/simianarmy/client/aws/proxyuser"}}
+{{end -}}
+{{if exists "/simianarmy/client/aws/proxypassword" -}}
+simianarmy.client.aws.proxyPassword = {{getv "/simianarmy/client/aws/proxypassword"}}
+{{end -}}
 
 {{if eq (getv "/simianarmy/client/localdb/enabled" "false") "true" -}}
 simianarmy.client.recorder.class = com.netflix.simianarmy.basic.LocalDbRecorder
