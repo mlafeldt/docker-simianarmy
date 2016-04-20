@@ -1,26 +1,33 @@
-# The file contains the properties for Chaos Monkey.
-# see documentation at:
-# https://github.com/Netflix/SimianArmy/wiki/Configuration
+#
+# Chaos Monkey Properties
+# See https://github.com/Netflix/SimianArmy/wiki/Chaos-Settings
+# and https://github.com/Netflix/SimianArmy/wiki/The-Chaos-Monkey-Army
+# vim: ft=jproperties
+#
 
-# let chaos run
 simianarmy.chaos.enabled = {{getv "/simianarmy/chaos/enabled" "true"}}
-
-# don't allow chaos to kill (ie dryrun mode)
 simianarmy.chaos.leashed = {{getv "/simianarmy/chaos/leashed" "true"}}
+simianarmy.chaos.burnmoney = {{getv "/simianarmy/chaos/burnmoney" "false"}}
+simianarmy.chaos.terminateOndemand.enabled = {{getv "/simianarmy/chaos/terminateondemand/enabled" "false"}}
 
-# set to "false" for Opt-In behavior, "true" for Opt-Out behavior
+simianarmy.chaos.mandatoryTermination.enabled = {{getv "/simianarmy/chaos/mandatorytermination/enabled" "false"}}
+{{if exists "/simianarmy/chaos/mandatorytermination/windowindays" -}}
+simianarmy.chaos.mandatoryTermination.windowInDays = {{getv "/simianarmy/chaos/mandatorytermination/windowindays"}}
+{{end -}}
+{{if exists "/simianarmy/chaos/mandatorytermination/defaultprobability" -}}
+simianarmy.chaos.mandatoryTermination.defaultProbability = {{getv "/simianarmy/chaos/mandatorytermination/defaultprobability"}}
+{{end -}}
+
 simianarmy.chaos.ASG.enabled = {{getv "/simianarmy/chaos/asg/enabled" "false"}}
-
-# uncomment this line to use tunable aggression
-#simianarmy.client.chaos.class = com.netflix.simianarmy.tunable.TunablyAggressiveChaosMonkey
-
-# default probability for all ASGs
 simianarmy.chaos.ASG.probability = {{getv "/simianarmy/chaos/asg/probability" "1.0"}}
-
-# increase or decrease the termination limit
 simianarmy.chaos.ASG.maxTerminationsPerDay = {{getv "/simianarmy/chaos/asg/maxterminationsperday" "1.0"}}
+{{if exists "/simianarmy/chaos/asgtag/key" -}}
+simianarmy.chaos.ASGtag.key = {{getv "/simianarmy/chaos/asgtag/key"}}
+{{end -}}
+{{if exists "/simianarmy/chaos/asgtag/value" -}}
+simianarmy.chaos.ASGtag.value = {{getv "/simianarmy/chaos/asgtag/value"}}
+{{end -}}
 
-# Strategies
 simianarmy.chaos.shutdowninstance.enabled = {{getv "/simianarmy/chaos/shutdowninstance/enabled" "true"}}
 simianarmy.chaos.blockallnetworktraffic.enabled = {{getv "/simianarmy/chaos/blockallnetworktraffic/enabled" "false"}}
 simianarmy.chaos.detachvolumes.enabled = {{getv "/simianarmy/chaos/detachvolumes/enabled" "false"}}
@@ -37,70 +44,10 @@ simianarmy.chaos.networkcorruption.enabled = {{getv "/simianarmy/chaos/networkco
 simianarmy.chaos.networklatency.enabled = {{getv "/simianarmy/chaos/networklatency/enabled" "false"}}
 simianarmy.chaos.networkloss.enabled = {{getv "/simianarmy/chaos/networkloss/enabled" "false"}}
 
-# Where we know the chaos strategy will incur charges, we won't run it unless burnmoney is true.
-simianarmy.chaos.burnmoney = {{getv "/simianarmy/chaos/burnmoney" "false"}}
-
-# Enable on-demand termination via API
-simianarmy.chaos.terminateOndemand.enabled = {{getv "/simianarmy/chaos/terminateondemand/enabled" "false"}}
-
-# enable a specific ASG
-# simianarmy.chaos.ASG.<asgName>.enabled = true
-# simianarmy.chaos.ASG.<asgName>.probability = 1.0
-
-# increase or decrease the termination limit for a specific ASG
-# simianarmy.chaos.ASG.<asgName>.maxTerminationsPerDay = 1.0
-
-# Enroll in mandatory terminations.  If a group has not had a
-# termination within the windowInDays range then it will terminate
-# one instance in the group with a 0.5 probability (at some point in
-# the next 2 days an instance should be terminated), then
-# do nothing again for windowInDays.  This forces "enabled" groups
-# that have a probability of 0.0 to have terminations periodically.
-simianarmy.chaos.mandatoryTermination.enabled = {{getv "/simianarmy/chaos/mandatorytermination/enabled" "false"}}
-simianarmy.chaos.mandatoryTermination.windowInDays = {{getv "/simianarmy/chaos/mandatorytermination/windowindays" "32"}}
-simianarmy.chaos.mandatoryTermination.defaultProbability = {{getv "/simianarmy/chaos/mandatorytermination/defaultprobability" "0.5"}}
-
-# Enable notification for Chaos termination for a specific instance group
-# simianarmy.chaos.<groupType>.<groupName>.notification.enabled = true
-
-# Set the destination email the termination notification sent to for a specific instance group
-# simianarmy.chaos.<groupType>.<groupName>.ownerEmail = foo@bar.com
-
-# Set the source email that sends the termination notification
+simianarmy.chaos.notification.global.enabled = {{getv "/simianarmy/chaos/notification/global/enabled" "false"}}
 {{if exists "/simianarmy/chaos/notification/sourceemail" -}}
 simianarmy.chaos.notification.sourceEmail = {{getv "/simianarmy/chaos/notification/sourceemail"}}
 {{end -}}
-
-# Enable notification for Chaos termination for all instance groups
-simianarmy.chaos.notification.global.enabled = {{getv "/simianarmy/chaos/notification/global/enabled" "false"}}
-
-# Set the destination email the termination notification is sent to for all instance groups
 {{if exists "/simianarmy/chaos/notification/receiveremail" -}}
 simianarmy.chaos.notification.global.receiverEmail = {{getv "/simianarmy/chaos/notification/receiveremail"}}
-{{end -}}
-
-# Set a prefix applied to the subject of all termination notifications
-# Probably want to include a trailing space to separate from start of default text
-#simianarmy.chaos.notification.subject.prefix = SubjectPrefix 
-
-# Set a suffix applied to the subject of all termination notifications
-# Probably want to include an escaped space " \ " to separate from end of default text
-#simianarmy.chaos.notification.subject.suffix =  \ SubjectSuffix
-
-# Set a prefix applied to the body of all termination notifications
-# Probably want to include a trailing space to separate from start of default text
-#simianarmy.chaos.notification.body.prefix = BodyPrefix 
-
-# Set a suffix applied to the body of all termination notifications
-# Probably want to include an escaped space " \ " to separate from end of default text
-#simianarmy.chaos.notification.body.suffix =  \ BodySuffix
-
-# Enable the email subject to be the same as the body, to include terminated instance and group information
-#simianarmy.chaos.notification.subject.isBody = true
-#set the tag filter on the ASGs to terminate only instances from the ASG with the this tag key and value
-{{if exists "/simianarmy/chaos/asgtag/key" -}}
-simianarmy.chaos.ASGtag.key = {{getv "/simianarmy/chaos/asgtag/key"}}
-{{end -}}
-{{if exists "/simianarmy/chaos/asgtag/value" -}}
-simianarmy.chaos.ASGtag.value = {{getv "/simianarmy/chaos/asgtag/value"}}
 {{end -}}

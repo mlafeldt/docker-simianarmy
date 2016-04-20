@@ -113,9 +113,16 @@ See https://github.com/Netflix/SimianArmy/wiki/Global-Settings for a detailed de
 | --- | ------- |
 | /simianarmy/chaos/enabled | true |
 | /simianarmy/chaos/leashed | true |
+| /simianarmy/chaos/burnmoney | false |
+| /simianarmy/chaos/terminateondemand/enabled | false |
+| /simianarmy/chaos/mandatorytermination/enabled | false |
+| /simianarmy/chaos/mandatorytermination/windowindays | |
+| /simianarmy/chaos/mandatorytermination/defaultprobability | |
 | /simianarmy/chaos/asg/enabled | false |
 | /simianarmy/chaos/asg/probability | 1.0 |
 | /simianarmy/chaos/asg/maxterminationsperday | 1.0 |
+| /simianarmy/chaos/asgtag/key | |
+| /simianarmy/chaos/asgtag/value | |
 | /simianarmy/chaos/shutdowninstance/enabled | true |
 | /simianarmy/chaos/blockallnetworktraffic/enabled | false |
 | /simianarmy/chaos/detachvolumes/enabled | false |
@@ -131,16 +138,9 @@ See https://github.com/Netflix/SimianArmy/wiki/Global-Settings for a detailed de
 | /simianarmy/chaos/networkcorruption/enabled | false |
 | /simianarmy/chaos/networklatency/enabled | false |
 | /simianarmy/chaos/networkloss/enabled | false |
-| /simianarmy/chaos/burnmoney | false |
-| /simianarmy/chaos/terminateondemand/enabled | false |
-| /simianarmy/chaos/mandatorytermination/enabled | false |
-| /simianarmy/chaos/mandatorytermination/windowindays | 32 |
-| /simianarmy/chaos/mandatorytermination/defaultprobability | 0.5 |
 | /simianarmy/chaos/notification/global/enabled | false |
 | /simianarmy/chaos/notification/sourceemail | |
 | /simianarmy/chaos/notification/receiveremail | |
-| /simianarmy/chaos/asgtag/key | |
-| /simianarmy/chaos/asgtag/value | |
 
 See https://github.com/Netflix/SimianArmy/wiki/Chaos-Settings for a detailed description of the properties. Also, consult https://github.com/Netflix/SimianArmy/wiki/The-Chaos-Monkey-Army to learn more about the different Chaos Monkey strategies.
 
