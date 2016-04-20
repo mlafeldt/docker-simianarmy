@@ -75,9 +75,9 @@ Properties marked with an asterisk (\*) are custom properties added by this Dock
 | --- | ------- |
 | /simianarmy/client/aws/accountkey | |
 | /simianarmy/client/aws/secretkey | |
-| /simianarmy/client/aws/region | us-west-1 |
-| /simianarmy/client/aws/accountname | default |
+| /simianarmy/client/aws/region | |
 | /simianarmy/client/aws/assumerolearn | |
+| /simianarmy/client/aws/accountname | |
 | /simianarmy/client/localdb/enabled\* | false |
 | /simianarmy/client/cloudformationmode/enabled\* | false |
 
