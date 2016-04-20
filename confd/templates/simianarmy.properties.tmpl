@@ -1,19 +1,18 @@
-# see documentation at:
-# https://github.com/Netflix/SimianArmy/wiki/Configuration
+#
+# Global Properties
+# See https://github.com/Netflix/SimianArmy/wiki/Global-Settings
+# vim: ft=jproperties
+#
 
-simianarmy.recorder.sdb.domain = {{getv "/simianarmy/recorder/sdb/domain" "SIMIAN_ARMY"}}
-
-# If using a non-SimbleDB recorder (LocalDB), these settings tweak defaults.
-# Following should be a writeable location, for monkey events when SimpleDB is not used
+{{if exists "/simianarmy/recorder/sdb/domain" -}}
+simianarmy.recorder.sdb.domain = {{getv "/simianarmy/recorder/sdb/domain"}}
+{{end -}}
 {{if exists "/simianarmy/recorder/localdb/file" -}}
 simianarmy.recorder.localdb.file = {{getv "/simianarmy/recorder/localdb/file"}}
 {{end -}}
-# Max number of events to record; old events will be expired after this limit is
-# reached.  Use this to avoid filling disk with events (or attach a big volume!)
 {{if exists "/simianarmy/recorder/localdb/maxevents" -}}
 simianarmy.recorder.localdb.max_events = {{getv "/simianarmy/recorder/localdb/maxevents"}}
 {{end -}}
-# Optional password to encrypt event storage.
 {{if exists "/simianarmy/recorder/localdb/password" -}}
 simianarmy.recorder.localdb.password = {{getv "/simianarmy/recorder/localdb/password"}}
 {{end -}}
@@ -21,17 +20,16 @@ simianarmy.recorder.localdb.password = {{getv "/simianarmy/recorder/localdb/pass
 simianarmy.scheduler.frequency = {{getv "/simianarmy/scheduler/frequency" "1"}}
 simianarmy.scheduler.frequencyUnit = {{getv "/simianarmy/scheduler/frequencyunit" "HOURS"}}
 simianarmy.scheduler.threads = {{getv "/simianarmy/scheduler/threads" "1"}}
+
 simianarmy.calendar.openHour = {{getv "/simianarmy/calendar/openhour" "9"}}
 simianarmy.calendar.closeHour = {{getv "/simianarmy/calendar/closehour" "15"}}
 simianarmy.calendar.timezone = {{getv "/simianarmy/calendar/timezone" "America/Los_Angeles"}}
-# override to force monkey time, useful for debugging off hours
 simianarmy.calendar.isMonkeyTime = {{getv "/simianarmy/calendar/ismonkeytime" "false"}}
 
-# Allows you to Set the (case sensitive) AWS Tag Key to use for owner tags; e.g. Owner or owner
-# Will be Monkey Wide - used by all Monkeys. If not set defaults to "owner"
-simianarmy.tags.owner = {{getv "/simianarmy/tags/owner" "owner"}}
+{{if exists "/simianarmy/tags/owner" -}}
+simianarmy.tags.owner = {{getv "/simianarmy/tags/owner"}}
+{{end -}}
 
-# Region override for Amazon Simple Email Service Client
 {{if exists "/simianarmy/aws/email/region" -}}
 simianarmy.aws.email.region = {{getv "/simianarmy/aws/email/region"}}
 {{end -}}

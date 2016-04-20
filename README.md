@@ -91,7 +91,7 @@ See https://github.com/Netflix/SimianArmy/wiki/Client-Settings for a detailed de
 
 | Key | Default |
 | --- | ------- |
-| /simianarmy/recorder/sdb/domain | SIMIAN_ARMY |
+| /simianarmy/recorder/sdb/domain | |
 | /simianarmy/recorder/localdb/file | |
 | /simianarmy/recorder/localdb/maxevents | |
 | /simianarmy/recorder/localdb/password | |
@@ -102,7 +102,7 @@ See https://github.com/Netflix/SimianArmy/wiki/Client-Settings for a detailed de
 | /simianarmy/calendar/closehour | 15 |
 | /simianarmy/calendar/timezone | America/Los_Angeles |
 | /simianarmy/calendar/ismonkeytime | false |
-| /simianarmy/tags/owner | owner |
+| /simianarmy/tags/owner | |
 | /simianarmy/aws/email/region | |
 
 See https://github.com/Netflix/SimianArmy/wiki/Global-Settings for a detailed description of the properties.
