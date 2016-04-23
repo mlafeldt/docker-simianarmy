@@ -1,6 +1,6 @@
-# The Simian Army, Docker Edition
+# The Simian Army - Docker Edition
 
-The goal of this project is to provide a highly configurable Docker image of Netflix's [Simian Army](https://github.com/Netflix/SimianArmy) as a sound basis for running automated chaos experiments.
+This project provides a highly configurable Docker image of the Simian Army as a sound basis for automating [chaos experiments](https://medium.com/production-ready/chaos-engineering-101-1103059fae44).
 
 > The Simian Army is a suite of tools for keeping your cloud operating in top form. Chaos Monkey, the first member, is a resiliency tool that helps ensure that your applications can tolerate random instance failures
 
