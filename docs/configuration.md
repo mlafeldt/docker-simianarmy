@@ -20,11 +20,11 @@ docker run -it --rm \
     -e SIMIANARMY_CLIENT_AWS_SECRETKEY=$AWS_SECRET_ACCESS_KEY \
     -e SIMIANARMY_CLIENT_AWS_REGION=$AWS_REGION \
     -e SIMIANARMY_CALENDAR_ISMONKEYTIME=true \
+    -e SIMIANARMY_CHAOS_ASG_ENABLED=true \
     mlafeldt/simianarmy
 ```
 
-Note: This example is safe to run as Chaos Monkey will operate in dry-run mode
-(`SIMIANARMY_CHAOS_LEASHED` is `true` by default).
+Note: This example is safe to run as Chaos Monkey will operate in dry-run mode (`SIMIANARMY_CHAOS_LEASHED` is `true` by default).
 
 ## Via etcd
 
