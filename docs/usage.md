@@ -11,7 +11,7 @@ See [Configuration](configuration.md) on how to configure the Simian Army.
 
 ## REST API
 
-If you want to access Simian Army's REST API, you additionally need to expose port 8080 like this:
+If you want to access Simian Army's [REST API](https://github.com/Netflix/SimianArmy/wiki/REST), you additionally need to expose port 8080 like this:
 
 ```bash
 docker run -it --rm -p 8080:8080 mlafeldt/simianarmy
