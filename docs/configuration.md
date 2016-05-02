@@ -10,6 +10,8 @@ confd can fetch configuration data from different key-value stores such as etcd 
 | simianarmy.calendar.isMonkeyTime | /simianarmy/calendar/ismonkeytime | SIMIANARMY_CALENDAR_ISMONKEYTIME |
 | ... | ... | ... |
 
+See [Configuration Properties](configuration-properties.md) for a list of all available properties.
+
 ## Via Environment Variables
 
 That being said, here is how to configure the Simian Army via environment variables:
@@ -45,7 +47,3 @@ docker run -it --rm \
 ```
 
 As this example shows, you can set `CONFD_OPTS` to pass [any available option](https://github.com/kelseyhightower/confd/blob/master/docs/command-line-flags.md) to confd to switch backends, change the log level, etc.
-
----
-
-See [Configuration Properties](configuration-properties.md) for a list of all available properties.

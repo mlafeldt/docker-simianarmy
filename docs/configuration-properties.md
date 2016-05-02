@@ -1,6 +1,6 @@
 # Configuration Properties
 
-What follows is an overview of all configuration properties you may set.
+What follows is an overview of all configuration properties you may set. See [Configuration](configuration.md) on how to pass properties to the Docker image.
 
 Properties marked with an asterisk (\*) are custom properties added by this Docker image to simplify configuration, e.g. to avoid having to configure long Java class names.
 
@@ -90,7 +90,3 @@ Conformity Monkey is disabled and cannot be configured at the moment.
 ## VolumeTagging Monkey Properties
 
 VolumeTagging Monkey is disabled and cannot be configured at the moment.
-
----
-
-See [Configuration](configuration.md) on how to pass properties to the Docker image.
