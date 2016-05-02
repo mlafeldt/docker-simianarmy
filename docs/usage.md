@@ -17,10 +17,12 @@ If you want to access Simian Army's [REST API](https://github.com/Netflix/Simian
 docker run -it --rm -p 8080:8080 mlafeldt/simianarmy
 ```
 
-## Debugging
+## Troubleshooting
 
 This will drop you into a login shell, which is useful for debugging:
 
 ```bash
 docker run -it --rm mlafeldt/simianarmy /bin/bash
 ```
+
+In general, the image will execute any command you pass on the command line.
