@@ -35,7 +35,7 @@ dev: build
 
 # The Simian Army persists state in SimpleDB.
 dump-sdb:
-	aws sdb select --select-expression "select * from $(SDB_DOMAIN)" | jq
+	aws sdb select --select-expression "select * from $(SDB_DOMAIN)" | jq .
 
 wipe-sdb:
 	aws sdb delete-domain --domain-name $(SDB_DOMAIN)
