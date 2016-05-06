@@ -9,7 +9,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Build Simian Army
-ENV SIMIANARMY_VERSION master
+ENV SIMIANARMY_VERSION 5cdf805
 WORKDIR /simianarmy
 RUN git clone git://github.com/Netflix/SimianArmy.git . \
     && git checkout -qf $SIMIANARMY_VERSION \
