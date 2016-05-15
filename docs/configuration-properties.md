@@ -1,6 +1,6 @@
 # Configuration Properties
 
-What follows is an overview of all configuration properties you may set. See [Configuration](configuration.md) on how to pass properties to the Docker image.
+What follows is an overview of all configuration properties you can set. See [Configuration](configuration.md) on how to pass properties to the Docker image.
 
 Properties marked with an asterisk (\*) are custom properties added by this Docker image to simplify configuration, e.g. to avoid having to configure long Java class names.
 

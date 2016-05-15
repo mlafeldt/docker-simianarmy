@@ -45,6 +45,7 @@ There are many more configuration settings you can pass to the Docker image, inc
 * [Configuration](https://github.com/mlafeldt/docker-simianarmy/blob/master/docs/configuration.md)
 * [Configuration Properties](https://github.com/mlafeldt/docker-simianarmy/blob/master/docs/configuration-properties.md)
 * [Notifications](https://github.com/mlafeldt/docker-simianarmy/blob/master/docs/notifications.md)
+* [REST API](https://github.com/mlafeldt/docker-simianarmy/blob/master/docs/api.md)
 
 ## Author
 
