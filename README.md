@@ -1,5 +1,8 @@
 # The Simian Army - Docker Edition
 
+[![](https://images.microbadger.com/badges/image/mlafeldt/simianarmy.svg)](https://microbadger.com/images/mlafeldt/simianarmy)
+[![](https://quay.io/repository/mlafeldt/simianarmy/status)](https://quay.io/repository/mlafeldt/simianarmy)
+
 This project provides a highly configurable Docker image of the [Simian Army](https://github.com/Netflix/SimianArmy) as a sound basis for [automating chaos experiments](https://medium.com/production-ready/chaos-monkey-for-fun-and-profit-87e2f343db31).
 
 > The Simian Army is a suite of tools for keeping your cloud operating in top form. Chaos Monkey, the first member, is a resiliency tool that helps ensure that your applications can tolerate random instance failures
