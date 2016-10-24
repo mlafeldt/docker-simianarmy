@@ -2,6 +2,7 @@
 
 [![](https://images.microbadger.com/badges/image/mlafeldt/simianarmy.svg)](https://microbadger.com/images/mlafeldt/simianarmy)
 [![](https://quay.io/repository/mlafeldt/simianarmy/status)](https://quay.io/repository/mlafeldt/simianarmy)
+[![](https://img.shields.io/docker/pulls/mlafeldt/simianarmy.svg?maxAge=604800)](https://hub.docker.com/r/mlafeldt/simianarmy/)
 
 This project provides a highly configurable Docker image of the [Simian Army](https://github.com/Netflix/SimianArmy) as a sound basis for [automating chaos experiments](https://medium.com/production-ready/chaos-monkey-for-fun-and-profit-87e2f343db31).
 
