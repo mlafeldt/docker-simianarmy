@@ -19,8 +19,8 @@ File.open("#{file_to_update}.new",'w') do |file|
 	value=m[2].strip
 	env_property=name.gsub('.','/').downcase
 
-	file.write("{{if exists \"#{env_property}\" -}}\n")
-        new_line="#{name} = {{getv \"#{env_property}\" \"#{value}\"}}\n"
+	file.write("{{if exists \"/#{env_property}\" -}}\n")
+        new_line="#{name} = {{getv \"/#{env_property}\" \"#{value}\"}}\n"
 	file.write(new_line)
 	file.write("{{end -}}\n")
     end
@@ -35,7 +35,7 @@ File.open("#{file_to_update}.new",'w') do |file|
       value=name_value[1].strip
 
       env_property=name.gsub('.','/').downcase
-      new_line="#{name} = {{getv \"#{env_property}\" \"#{value}\"}}\n"
+      new_line="#{name} = {{getv \"/#{env_property}\" \"#{value}\"}}\n"
       file.write(new_line)
     end
   end
