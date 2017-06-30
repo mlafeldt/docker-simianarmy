@@ -81,7 +81,61 @@ See https://github.com/Netflix/SimianArmy/wiki/Chaos-Settings for a detailed des
 
 ## Janitor Monkey Properties
 
-Janitor Monkey is disabled and cannot be configured at the moment.
+| Key | Default |
+| --- | ------- |
+| simianarmy/janitor/enabled | true
+| simianarmy/janitor/leashed | true
+| simianarmy/janitor/resources/sdb/domain | SIMIAN_ARMY
+| simianarmy/calendar/isMonkeyTime | <not set> |
+| simianarmy/janitor/enabledResources | Instance, ASG, EBS_Volume, EBS_Snapshot, Launch_Config
+| simianarmy/janitor/notification/sourceEmail | foo@bar/com
+| simianarmy/janitor/summaryEmail/to | foo@bar/com
+| simianarmy/janitor/notification/defaultEmail | foo@bar/com
+| simianarmy/janitor/notification/daysBeforeTermination | 2
+| simianarmy/janitor/snapshots/ownerId | <not set> |
+| simianarmy/janitor/rule/orphanedInstanceRule/enabled | true
+| simianarmy/janitor/rule/orphanedInstanceRule/instanceAgeThreshold | 2
+| simianarmy/janitor/rule/orphanedInstanceRule/retentionDaysWithOwner | 3
+| simianarmy/janitor/rule/orphanedInstanceRule/retentionDaysWithoutOwner | 8
+| simianarmy/janitor/rule/orphanedInstanceRule/opsworks/parentage | false
+| simianarmy/janitor/rule/untaggedRule/enabled | false
+| simianarmy/janitor/rule/untaggedRule/requiredTags | owner, purpose, project
+| simianarmy/janitor/rule/untaggedRule/resources | Instance, ASG, EBS_Volume, EBS_Snapshot
+| simianarmy/janitor/rule/untaggedRule/retentionDaysWithOwner | 2
+| simianarmy/janitor/rule/untaggedRule/retentionDaysWithoutOwner | 2
+| simianarmy/janitor/rule/oldDetachedVolumeRule/enabled | true
+| simianarmy/janitor/rule/oldDetachedVolumeRule/detachDaysThreshold | 30
+| simianarmy/janitor/rule/oldDetachedVolumeRule/retentionDays | 7
+| simianarmy/janitor/rule/deleteOnTerminationRule/enabled | true
+| simianarmy/janitor/rule/deleteOnTerminationRule/retentionDays | 3
+| simianarmy/janitor/rule/noGeneratedAMIRule/enabled | true
+| simianarmy/janitor/rule/noGeneratedAMIRule/ageThreshold | 30
+| simianarmy/janitor/rule/noGeneratedAMIRule/retentionDays | 7
+| simianarmy/janitor/rule/oldEmptyASGRule/enabled | true
+| simianarmy/janitor/rule/oldEmptyASGRule/launchConfigAgeThreshold | 50
+| simianarmy/janitor/rule/oldEmptyASGRule/retentionDays | 10
+| simianarmy/janitor/rule/suspendedASGRule/enabled | true
+| simianarmy/janitor/rule/suspendedASGRule/suspensionAgeThreshold | 2
+| simianarmy/janitor/rule/suspendedASGRule/retentionDays | 5
+| simianarmy/janitor/Eureka/enabled | false
+| simianarmy/janitor/rule/oldUnusedLaunchConfigRule/enabled | true
+| simianarmy/janitor/rule/oldUnusedLaunchConfigRule/ageThreshold | 4
+| simianarmy/janitor/rule/oldUnusedLaunchConfigRule/retentionDays | 3
+| simianarmy/janitor/image/crawler/lookBackDays | 60
+| simianarmy/janitor/image/ownerId | <not set> |
+| simianarmy/janitor/rule/unusedImageRule/enabled | false
+| simianarmy/janitor/rule/unusedImageRule/lastReferenceDaysThreshold | 45
+| simianarmy/janitor/rule/unusedImageRule/retentionDays | 3
+| simianarmy/janitor/edda/enabled | <not set> |
+| simianarmy/janitor/edda/endpoint/useast1 | <not set> |
+| simianarmy/janitor/edda/client/timeout | <not set> |
+| simianarmy/janitor/edda/client/retries | <not set> |
+| simianarmy/janitor/edda/client/retryInterval | <not set> |
+| simianarmy/janitor/notification/ownerEmailDomain | <not set> |
+
+See https://github.com/Netflix/SimianArmy/wiki/Janitor-Settings for a detailed description of the properties.
+
+*NOTE*: In order to use JanitorMonkey to clean up AMIs, it requires [Edda](https://github.com/Netflix/edda) to be installed and configured.
 
 ## Conformity Monkey Properties
 
