@@ -1,2 +1,93 @@
-# Disable Janitor Monkey
-simianarmy.janitor.enabled = false
+# see documentation at:
+# https://github.com/Netflix/SimianArmy/wiki/Configuration
+
+simianarmy.janitor.enabled = {{getv "/simianarmy/janitor/enabled" "false"}}
+
+simianarmy.janitor.leashed = {{getv "/simianarmy/janitor/leashed" "true"}}
+
+simianarmy.janitor.resources.sdb.domain = {{getv "/simianarmy/janitor/resources/sdb/domain" "SIMIAN_ARMY"}}
+
+{{if exists "/simianarmy/calendar/ismonkeytime" -}}
+simianarmy.calendar.isMonkeyTime = {{getv "/simianarmy/calendar/ismonkeytime" "true"}}
+{{end -}}
+
+simianarmy.janitor.enabledResources = {{getv "/simianarmy/janitor/enabledresources" "Instance, ASG, EBS_Volume, EBS_Snapshot, Launch_Config"}}
+
+simianarmy.janitor.notification.sourceEmail = {{getv "/simianarmy/janitor/notification/sourceemail" "foo@bar.com"}}
+
+simianarmy.janitor.summaryEmail.to = {{getv "/simianarmy/janitor/summaryemail/to" "foo@bar.com"}}
+
+simianarmy.janitor.notification.defaultEmail = {{getv "/simianarmy/janitor/notification/defaultemail" "foo@bar.com"}}
+
+simianarmy.janitor.notification.daysBeforeTermination = {{getv "/simianarmy/janitor/notification/daysbeforetermination" "2"}}
+
+{{if exists "/simianarmy/janitor/snapshots/ownerid" -}}
+simianarmy.janitor.snapshots.ownerId = {{getv "/simianarmy/janitor/snapshots/ownerid" "012345678"}}
+{{end -}}
+
+simianarmy.janitor.rule.orphanedInstanceRule.enabled = {{getv "/simianarmy/janitor/rule/orphanedinstancerule/enabled" "true"}}
+simianarmy.janitor.rule.orphanedInstanceRule.instanceAgeThreshold = {{getv "/simianarmy/janitor/rule/orphanedinstancerule/instanceagethreshold" "2"}}
+simianarmy.janitor.rule.orphanedInstanceRule.retentionDaysWithOwner = {{getv "/simianarmy/janitor/rule/orphanedinstancerule/retentiondayswithowner" "3"}}
+simianarmy.janitor.rule.orphanedInstanceRule.retentionDaysWithoutOwner = {{getv "/simianarmy/janitor/rule/orphanedinstancerule/retentiondayswithoutowner" "8"}}
+simianarmy.janitor.rule.orphanedInstanceRule.opsworks.parentage = {{getv "/simianarmy/janitor/rule/orphanedinstancerule/opsworks/parentage" "false"}}
+
+simianarmy.janitor.rule.untaggedRule.enabled = {{getv "/simianarmy/janitor/rule/untaggedrule/enabled" "false"}}
+simianarmy.janitor.rule.untaggedRule.requiredTags = {{getv "/simianarmy/janitor/rule/untaggedrule/requiredtags" "owner, purpose, project"}}
+simianarmy.janitor.rule.untaggedRule.resources = {{getv "/simianarmy/janitor/rule/untaggedrule/resources" "Instance, ASG, EBS_Volume, EBS_Snapshot"}}
+simianarmy.janitor.rule.untaggedRule.retentionDaysWithOwner = {{getv "/simianarmy/janitor/rule/untaggedrule/retentiondayswithowner" "2"}}
+simianarmy.janitor.rule.untaggedRule.retentionDaysWithoutOwner = {{getv "/simianarmy/janitor/rule/untaggedrule/retentiondayswithoutowner" "2"}}
+
+simianarmy.janitor.rule.oldDetachedVolumeRule.enabled = {{getv "/simianarmy/janitor/rule/olddetachedvolumerule/enabled" "true"}}
+simianarmy.janitor.rule.oldDetachedVolumeRule.detachDaysThreshold = {{getv "/simianarmy/janitor/rule/olddetachedvolumerule/detachdaysthreshold" "30"}}
+simianarmy.janitor.rule.oldDetachedVolumeRule.retentionDays = {{getv "/simianarmy/janitor/rule/olddetachedvolumerule/retentiondays" "7"}}
+
+simianarmy.janitor.rule.deleteOnTerminationRule.enabled = {{getv "/simianarmy/janitor/rule/deleteonterminationrule/enabled" "true"}}
+simianarmy.janitor.rule.deleteOnTerminationRule.retentionDays = {{getv "/simianarmy/janitor/rule/deleteonterminationrule/retentiondays" "3"}}
+
+simianarmy.janitor.rule.noGeneratedAMIRule.enabled = {{getv "/simianarmy/janitor/rule/nogeneratedamirule/enabled" "true"}}
+simianarmy.janitor.rule.noGeneratedAMIRule.ageThreshold = {{getv "/simianarmy/janitor/rule/nogeneratedamirule/agethreshold" "30"}}
+simianarmy.janitor.rule.noGeneratedAMIRule.retentionDays = {{getv "/simianarmy/janitor/rule/nogeneratedamirule/retentiondays" "7"}}
+
+simianarmy.janitor.rule.oldEmptyASGRule.enabled = {{getv "/simianarmy/janitor/rule/oldemptyasgrule/enabled" "true"}}
+simianarmy.janitor.rule.oldEmptyASGRule.launchConfigAgeThreshold = {{getv "/simianarmy/janitor/rule/oldemptyasgrule/launchconfigagethreshold" "50"}}
+simianarmy.janitor.rule.oldEmptyASGRule.retentionDays = {{getv "/simianarmy/janitor/rule/oldemptyasgrule/retentiondays" "10"}}
+
+simianarmy.janitor.rule.suspendedASGRule.enabled = {{getv "/simianarmy/janitor/rule/suspendedasgrule/enabled" "true"}}
+simianarmy.janitor.rule.suspendedASGRule.suspensionAgeThreshold = {{getv "/simianarmy/janitor/rule/suspendedasgrule/suspensionagethreshold" "2"}}
+simianarmy.janitor.rule.suspendedASGRule.retentionDays = {{getv "/simianarmy/janitor/rule/suspendedasgrule/retentiondays" "5"}}
+
+simianarmy.janitor.Eureka.enabled = {{getv "/simianarmy/janitor/eureka/enabled" "false"}}
+
+simianarmy.janitor.rule.oldUnusedLaunchConfigRule.enabled = {{getv "/simianarmy/janitor/rule/oldunusedlaunchconfigrule/enabled" "true"}}
+simianarmy.janitor.rule.oldUnusedLaunchConfigRule.ageThreshold = {{getv "/simianarmy/janitor/rule/oldunusedlaunchconfigrule/agethreshold" "4"}}
+simianarmy.janitor.rule.oldUnusedLaunchConfigRule.retentionDays = {{getv "/simianarmy/janitor/rule/oldunusedlaunchconfigrule/retentiondays" "3"}}
+
+simianarmy.janitor.image.crawler.lookBackDays = {{getv "/simianarmy/janitor/image/crawler/lookbackdays" "60"}}
+{{if exists "/simianarmy/janitor/image/ownerid" -}}
+simianarmy.janitor.image.ownerId = {{getv "/simianarmy/janitor/image/ownerid" "1234567890"}}
+{{end -}}
+
+simianarmy.janitor.rule.unusedImageRule.enabled = {{getv "/simianarmy/janitor/rule/unusedimagerule/enabled" "false"}}
+simianarmy.janitor.rule.unusedImageRule.lastReferenceDaysThreshold = {{getv "/simianarmy/janitor/rule/unusedimagerule/lastreferencedaysthreshold" "45"}}
+simianarmy.janitor.rule.unusedImageRule.retentionDays = {{getv "/simianarmy/janitor/rule/unusedimagerule/retentiondays" "3"}}
+
+{{if exists "/simianarmy/janitor/edda/enabled" -}}
+simianarmy.janitor.edda.enabled = {{getv "/simianarmy/janitor/edda/enabled" "true"}}
+{{end -}}
+{{if exists "/simianarmy/janitor/edda/endpoint/useast1" -}}
+simianarmy.janitor.edda.endpoint.us-east-1 = {{getv "/simianarmy/janitor/edda/endpoint/useast1" "http://localhost:8080"}}
+{{end -}}
+
+{{if exists "/simianarmy/janitor/edda/client/timeout" -}}
+simianarmy.janitor.edda.client.timeout = {{getv "/simianarmy/janitor/edda/client/timeout" "30000"}}
+{{end -}}
+{{if exists "/simianarmy/janitor/edda/client/retries" -}}
+simianarmy.janitor.edda.client.retries = {{getv "/simianarmy/janitor/edda/client/retries" "3"}}
+{{end -}}
+{{if exists "/simianarmy/janitor/edda/client/retryinterval" -}}
+simianarmy.janitor.edda.client.retryInterval = {{getv "/simianarmy/janitor/edda/client/retryinterval" "1000"}}
+{{end -}}
+
+{{if exists "/simianarmy/janitor/notification/owneremaildomain" -}}
+simianarmy.janitor.notification.ownerEmailDomain = {{getv "/simianarmy/janitor/notification/owneremaildomain" "bar.com"}}
+{{end -}}
