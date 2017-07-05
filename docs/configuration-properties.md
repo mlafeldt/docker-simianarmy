@@ -83,7 +83,7 @@ See https://github.com/Netflix/SimianArmy/wiki/Chaos-Settings for a detailed des
 
 | Key | Default |
 | --- | ------- |
-| simianarmy/janitor/enabled | true |
+| simianarmy/janitor/enabled | false |
 | simianarmy/janitor/leashed | true |
 | simianarmy/janitor/resources/sdb/domain | SIMIAN_ARMY |
 | simianarmy/calendar/isMonkeyTime | <not set> |
