@@ -16,7 +16,7 @@ RUN git clone git://github.com/Netflix/SimianArmy.git . \
     && ./gradlew build
 
 # Set up confd
-ENV CONFD_VERSION 0.12.0-alpha3
+ENV CONFD_VERSION 0.13.0
 RUN curl -fsSL https://github.com/kelseyhightower/confd/releases/download/v${CONFD_VERSION}/confd-${CONFD_VERSION}-linux-amd64 -o /usr/local/bin/confd \
     && chmod +x /usr/local/bin/confd
 COPY confd/ /etc/confd
