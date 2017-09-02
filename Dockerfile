@@ -13,7 +13,7 @@ ENV SIMIANARMY_VERSION v2.5.3
 WORKDIR /simianarmy
 RUN git clone git://github.com/Netflix/SimianArmy.git . \
     && git checkout -qf $SIMIANARMY_VERSION \
-    && ./gradlew build
+    && ./gradlew build --no-daemon
 
 # Set up confd
 ENV CONFD_VERSION 0.13.0

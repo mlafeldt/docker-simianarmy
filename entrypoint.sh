@@ -11,4 +11,4 @@ if test $# -ge 1; then
 fi
 
 # Start Simian Army
-exec ./gradlew jettyRun
+exec ./gradlew jettyRun --no-daemon
