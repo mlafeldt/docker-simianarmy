@@ -1,6 +1,6 @@
 IMAGE := mlafeldt/simianarmy
 
-CHAOS_ASG_ENABLED := true
+CHAOS_ASG_ENABLED := false
 CHAOS_LEASHED     := true
 
 ENV := -e CONFD_OPTS="$(CONFD_OPTS)" \
