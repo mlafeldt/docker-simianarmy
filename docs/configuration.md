@@ -17,7 +17,7 @@ See [Configuration Properties](configuration-properties.md) for a list of all av
 That being said, here is how to configure the Simian Army via environment variables:
 
 ```bash
-docker run -it --rm \
+docker run -d \
     -e SIMIANARMY_CLIENT_AWS_ACCOUNTKEY=$AWS_ACCESS_KEY_ID \
     -e SIMIANARMY_CLIENT_AWS_SECRETKEY=$AWS_SECRET_ACCESS_KEY \
     -e SIMIANARMY_CLIENT_AWS_REGION=$AWS_REGION \
@@ -41,7 +41,7 @@ etcdctl set /simianarmy/client/aws/region $AWS_REGION
 etcdctl set /simianarmy/calendar/ismonkeytime true
 
 # Start container using data in etcd
-docker run -it --rm \
+docker run -d \
     -e CONFD_OPTS="-backend=etcd -node=$ETCDCTL_ENDPOINT" \
     mlafeldt/simianarmy
 ```

@@ -13,7 +13,7 @@ This project provides a highly configurable Docker image of the [Simian Army](ht
 As an example, this command will start a Docker container running the Simian Army and instruct Chaos Monkey to consider all auto scaling groups (ASGs) in the given AWS account for termination:
 
 ```bash
-docker run -it --rm \
+docker run -d \
     -e SIMIANARMY_CLIENT_AWS_ACCOUNTKEY=$AWS_ACCESS_KEY_ID \
     -e SIMIANARMY_CLIENT_AWS_SECRETKEY=$AWS_SECRET_ACCESS_KEY \
     -e SIMIANARMY_CLIENT_AWS_REGION=$AWS_REGION \
@@ -27,7 +27,7 @@ This example is safe to run as Chaos Monkey will operate in dry-run mode by defa
 The second example is more realistic. This time, Chaos Monkey will randomly terminate instances of the auto scaling groups tagged with a specific key-value pair:
 
 ```bash
-docker run -it --rm \
+docker run -d \
     -e SIMIANARMY_CLIENT_AWS_ACCOUNTKEY=$AWS_ACCESS_KEY_ID \
     -e SIMIANARMY_CLIENT_AWS_SECRETKEY=$AWS_SECRET_ACCESS_KEY \
     -e SIMIANARMY_CLIENT_AWS_REGION=$AWS_REGION \
